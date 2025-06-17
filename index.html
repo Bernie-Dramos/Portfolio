@@ -1,391 +1,694 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bernardo's Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Bernardo E. Dramos Jr.</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-        <div class="logo">Bernardo E. Dramos Jr.</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-            </div>
-        </div>
-    </nav>
-    <section id="profile">
-        <div class="section__pic-container">
-            <img src="./assets/profile-pic.jpg" alt="Bernardo Dramos profile pic">
-        </div>
-        <div class="section__text">
-            <p clas="section__text__p1">Hello! I'm</p>
-            <h1 class="title"> Bernardo Dramos</h1>
-            <p class="section__text__p2">Python Developer</p>
-            <p class="section__text__p2">&</p>
-            <p class="section__text__p2">Full-Stack Developer</p>
-            <div class="btn-container">
-                <button class="btn btn-color-2"
-                  onclick="window.open('./assets/bernardo-dramos-cv.pdf')"
-                >
-                  Download CV
-                </button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bernardo E. Dramos Jr. - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-                <button class="btn btn-color-1" 
-                  onclick="location.href='./#contact'">
-                  Contact Info
-                </button>
+        body {
+            background: linear-gradient(135deg, #022D36 0%, #0E4C92 100%);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        #hamburger-nav {
+            display: none;
+        }
+
+        .hamburger-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .hamburger-icon span {
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-links {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #022D36;
+            width: 200px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-links a {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .menu-links.open {
+            max-height: 300px;
+        }
+
+        .hamburger-icon.open span:first-child {
+            transform: rotate(45deg) translate(10px, 5px);
+        }
+
+        .hamburger-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-icon.open span:last-child {
+            transform: rotate(-45deg) translate(10px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-container {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-color-1 {
+            background: #00d4ff;
+            color: #022D36;
+        }
+
+        .btn-color-1:hover {
+            background: #fff;
+            color: #022D36;
+        }
+
+        .btn-color-2 {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .btn-color-2:hover {
+            background: #fff;
+            color: #022D36;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            background: #0E4C92;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            transform-style: preserve-3d;
+            perspective: 600px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #00d4ff;
+        }
+
+        /* About Section */
+        .about-details-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-containers {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .details-container {
+            background: #fff;
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            flex: 1;
+        }
+
+        .details-container h3 {
+            margin-bottom: 1rem;
+            color: #022D36;
+        }
+
+        .text-container {
+            max-width: 800px;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Experience Section */
+        .experience-details-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .article-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        article {
+            background: #fff;
+            color: #333;
+            padding: 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 200px;
+        }
+
+        article .icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .color-container {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .color-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            border-radius: 1rem;
+            object-fit: cover;
+        }
+
+        .project-title {
+            margin: 1rem 0;
+            color: #022D36;
+        }
+
+        .project-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            color: #022D36;
+            border: 1px solid #022D36;
+            margin: 0 0.5rem;
+        }
+
+        .project-btn:hover {
+            background: #022D36;
+            color: #fff;
+        }
+
+        /* Contact Section */
+        .contact-info-upper-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+
+        .contact-info-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #333;
+        }
+
+        .contact-icon {
+            height: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #022D36;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 1400px) {
+            .hero {
+                height: 83vh;
+            }
+            .about-containers {
+                flex-wrap: wrap;
+            }
+            #contact {
+                height: fit-content;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            #desktop-nav {
+                display: none;
+            }
+            #hamburger-nav {
+                display: flex;
+            }
+            .experience-details-container {
+                margin-top: 2rem;
+            }
+            .hero,
+            .section-container {
+                display: block;
+            }
+            section {
+                margin: 0 5%;
+                height: fit-content;
+            }
+            .about-containers {
+                margin-top: 0;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            #contact,
+            footer {
+                height: 40vh;
+            }
+            .hero {
+                height: 83vh;
+                margin-bottom: 0;
+            }
+            article {
+                font-size: 1rem;
+            }
+            footer nav {
+                height: fit-content;
+                margin-bottom: 2rem;
+            }
+            .about-containers,
+            .contact-info-upper-container,
+            .btn-container {
+                flex-wrap: wrap;
+            }
+            .contact-info-container {
+                margin: 0;
+            }
+            .contact-info-container p,
+            .nav-links li a {
+                font-size: 1rem;
+            }
+            .experience-sub-title {
+                font-size: 1.25rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            .nav-links li a {
+                padding: 1rem 0.5rem;
+                min-width: 44px;
+                min-height: 44px;
+                display: inline-block;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1.25rem;
+            }
+            .text-container {
+                text-align: justify;
+            }
+        }
+
+        @media screen and (max-width: 1200px), 
+               screen and (max-width: 600px) {
+            .about-containers,
+            .contact-info-upper-container,
+            .btn-container {
+                transition: all 0.3s;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Bernardo E. Dramos Jr.</div>
+        <div id="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div id="hamburger-nav">
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
             </div>
-            <div id="socials-container">
-                <img src="./assets/linkedin.png" 
-                alt="My LinkedIn profile" 
-                class="icon" 
-                onclick="location.href='https://www.linkedin.com/in/bernardoedramosjr-62aa85229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'">
-            
-                <img src="./assets/github.png" 
-                alt="My Github profile" 
-                class="icon" 
-                onclick="location.href='https://github.com/Bernie-Dramos'">
-            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Bernardo Dramos</h1>
+        <p>Python Developer & Full-Stack Developer</p>
+        <div class="btn-container">
+            <a href="#" class="btn btn-color-1">Download CV</a>
+            <a href="#contact" class="btn btn-color-2">Contact Info</a>
         </div>
     </section>
+
     <section id="about">
-        <p class="section__text__p1">Get To Know More</p>
-        <h1 class="title">About Me</h1>
-        <div class="section-container">
-          <div class="section__pic-container">
-            <img
-              src="./assets/about-picc.jpg"
-              alt="Profile picture"
-              class="about-pic"
-            />
-          </div>
-          <div class="about-details-container">
+        <h2>About Me</h2>
+        <div class="about-details-container">
             <div class="about-containers">
-              <div class="details-container">
-                <img
-                  src="./assets/experience.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <h3>Experience</h3>
-                <p>1 Year<br>Python Development<br>Full-Stack Development</p>
-              </div>
-              <div class="details-container">
-                <img
-                  src="./assets/education.png"
-                  alt="Education icon"
-                  class="icon"
-                />
-                <h3>Education</h3>
-                <p>B. Tech Computer Science & Eng.<br>2026</p>
-              </div>
+                <div class="details-container">
+                    <h3>Experience</h3>
+                    <p>1 Year<br>Python Development<br>Full-Stack Development</p>
+                </div>
+                <div class="details-container">
+                    <h3>Education</h3>
+                    <p>B. Tech Computer Science & Eng.<br>2026</p>
+                </div>
             </div>
             <div class="text-container">
-                <p>I believe to be a hardworking person who strives to achieve quality over quantity in my work. 
-                  I can adapt with ease which aids in my problem solving skills and new challenges are always 
-                  welcomed, so that I may overcome them and grow as working professional. My passion is learning, 
-                  especially from those who are more experienced as it leads me to become more resourceful when 
-                  difficulties arise.</p>
+                <p>I believe to be a hardworking person who strives to achieve quality over quantity in my work. I can adapt with ease which aids in my problem-solving skills, and new challenges are always welcomed, so that I may overcome them and grow as a working professional. My passion is learning, especially from those who are more experienced, as it leads me to become more resourceful when difficulties arise.</p>
             </div>
-          </div>
         </div>
-        <img src="./assets/arrow.png" 
-        alt="Arrow icon" 
-        class="icon arrow" 
-        onclick="location.href='./#experience'"
-        />
     </section>
+
     <section id="experience">
-        <p class="section__text__p1">Explore My</p>
-        <h1 class="title">Experience</h1>
+        <h2>Experience</h2>
         <div class="experience-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <h2 class="experience-sub-title">Frontend</h2>
-              <div class="article-container">
+            <div class="article-container">
+                <div class="experience-sub-title">Frontend</div>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>HTML</h3>
-                    <p>Experienced</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="HTML Icon" class="icon">
+                    <div>
+                        <h4>HTML</h4>
+                        <p>Experienced</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>CSS</h3>
-                    <p>Experienced</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="CSS Icon" class="icon">
+                    <div>
+                        <h4>CSS</h4>
+                        <p>Experienced</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>Django</h3>
-                    <p>Beginner</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="Django Icon" class="icon">
+                    <div>
+                        <h4>Django</h4>
+                        <p>Beginner</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>JavaScript</h3>
-                    <p>Intermediate</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="JavaScript Icon" class="icon">
+                    <div>
+                        <h4>JavaScript</h4>
+                        <p>Intermediate</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>React</h3>
-                    <p>Intermediate</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="React Icon" class="icon">
+                    <div>
+                        <h4>React</h4>
+                        <p>Intermediate</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>Express.js</h3>
-                    <p>Intermediate</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="Express.js Icon" class="icon">
+                    <div>
+                        <h4>Express.js</h4>
+                        <p>Intermediate</p>
+                    </div>
                 </article>
-              </div>
             </div>
-            <div class="details-container">
-              <h2 class="experience-sub-title">Backend</h2>
-              <div class="article-container">
+            <div class="article-container">
+                <div class="experience-sub-title">Backend</div>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>Python</h3>
-                    <p>Experienced</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="Python Icon" class="icon">
+                    <div>
+                        <h4>Python</h4>
+                        <p>Experienced</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>Java</h3>
-                    <p>Intermediate</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="Java Icon" class="icon">
+                    <div>
+                        <h4>Java</h4>
+                        <p>Intermediate</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>Go</h3>
-                    <p>Beginner</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="Go Icon" class="icon">
+                    <div>
+                        <h4>Go</h4>
+                        <p>Beginner</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>C++</h3>
-                    <p>Beginner</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="C++ Icon" class="icon">
+                    <div>
+                        <h4>C++</h4>
+                        <p>Beginner</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>Node.js</h3>
-                    <p>Intermediate</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="Node.js Icon" class="icon">
+                    <div>
+                        <h4>Node.js</h4>
+                        <p>Intermediate</p>
+                    </div>
                 </article>
                 <article>
-                  <img
-                    src="./assets/checkmark.png"
-                    alt="Experience icon"
-                    class="icon"
-                  />
-                  <div>
-                    <h3>MongoDB</h3>
-                    <p>Beginner</p>
-                  </div>
+                    <img src="assets\checkmark.png" alt="MongoDB Icon" class="icon">
+                    <div>
+                        <h4>MongoDB</h4>
+                        <p>Beginner</p>
+                    </div>
                 </article>
-              </div>
             </div>
-          </div>
         </div>
-        <img
-          src="./assets/arrow.png"
-          alt="Arrow icon"
-          class="icon arrow"
-          onclick="location.href='./#projects'"
-        />
     </section>
+
     <section id="projects">
-        <p class="section__text__p1">Browse My Recent</p>
-        <h1 class="title">Projects</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/project-1.png" 
-                    alt="Project 1 image"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Project One</h2>
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="color-container">
+                <img src="https://via.placeholder.com/300x200" alt="Project One" class="project-img">
+                <h3 class="project-title">Project One</h3>
                 <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn" 
-                    onclick="location.href='https://github.com'">
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn" 
-                    onclick="location.href='https://github.com'">
-                        Visit Site
-                    </button>
+                    <a href="#" class="project-btn">Github</a>
+                    <a href="#" class="project-btn">Visit Site</a>
                 </div>
             </div>
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/project-2.png" 
-                    alt="Project 2 image"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Project Two</h2>
+            <div class="color-container">
+                <img src="https://via.placeholder.com/300x200" alt="Project Two" class="project-img">
+                <h3 class="project-title">Project Two</h3>
                 <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn" 
-                    onclick="location.href='https://github.com'">
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn" 
-                    onclick="location.href='https://github.com'">
-                      Visit Site
-                    </button>
+                    <a href="#" class="project-btn">Github</a>
+                    <a href="#" class="project-btn">Visit Site</a>
                 </div>
             </div>
-            <div class="details-container color-container">
-                <div class="article-container">
-                    <img src="./assets/project-3.png" 
-                    alt="Project 3 image"
-                    class="project-img"
-                    />
-                </div>
-                <h2 class="experience-sub-title project-title">Project Three</h2>
+            <div class="color-container">
+                <img src="https://via.placeholder.com/300x200" alt="Project Three" class="project-img">
+                <h3 class="project-title">Project Three</h3>
                 <div class="btn-container">
-                    <button 
-                    class="btn btn-color-2 project-btn" 
-                    onclick="location.href='https://github.com'">
-                        Github
-                    </button>
-                    <button 
-                    class="btn btn-color-2 project-btn" 
-                    onclick="location.href='https://github.com'">
-                      Visit Site
-                    </button>
+                    <a href="#" class="project-btn">Github</a>
+                    <a href="#" class="project-btn">Visit Site</a>
                 </div>
-            </div>
             </div>
         </div>
-        <img
-          src="./assets/arrow.png"
-          alt="Arrow icon"
-          class="icon arrow"
-          onclick="location.href='./#contact'"
-        />
     </section>
+
     <section id="contact">
-        <p class="section__text__p1">Get in Touch</p>
-        <h1 class="title">Contact Me</h1>
+        <h2>Contact Me</h2>
         <div class="contact-info-upper-container">
-          <div class="contact-info-container">
-            <img
-              src="./assets/email.png"
-              alt="Email icon"
-              class="icon contact-icon email-icon"
-            />
-            <p><a href="mailto:dramosb44@gmail.com">dramosb44@gmail.com</a></p>
-          </div>
-          <div class="contact-info-container">
-            <img
-              src="./assets/linkedin.png"
-              alt="LinkedIn icon"
-              class="icon contact-icon"
-            />
-            <p><a href="https://www.linkedin.com/in/bernardoedramosjr-62aa85229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></p>
-          </div>
+            <div class="contact-info-container">
+                <img src="https://via.placeholder.com/40" alt="Email Icon" class="contact-icon email-icon">
+                <p><a href="mailto:bernardo@example.com">bernardo@example.com</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="https://via.placeholder.com/40" alt="LinkedIn Icon" class="contact-icon">
+                <p><a href="#">LinkedIn</a></p>
+            </div>
         </div>
     </section>
-      <footer>
+
+    <footer>
         <nav>
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                  </ul>
-            </div>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </nav>
-        <p>Copyright &copy; 2024 Bernardo E. Dramos Jr. All Rights Reserved.</p>
-      </footer>
-    <script src="script.js"></script>
-  </body>
+        <p>Copyright © 2025 Bernardo E. Dramos Jr. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            menu.classList.toggle("open");
+            icon.classList.toggle("open");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.addEventListener("click", function (e) {
+                if (e.target.matches('a[href^="#"]')) {
+                    const targetId = e.target.getAttribute("href");
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: "smooth" });
+                        const menu = document.querySelector(".menu-links");
+                        const icon = document.querySelector(".hamburger-icon");
+                        if (menu && icon && menu.classList.contains("open")) {
+                            menu.classList.remove("open");
+                            icon.classList.remove("open");
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
 </html>

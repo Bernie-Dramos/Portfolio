@@ -86,6 +86,13 @@
       gap: 0.5rem;
       text-align: center;
     }
+    .nav-links li a {
+      padding: 1rem 0.5rem;
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+    }
     .section__pic-container {
       width: auto;
       height: 46vw;
@@ -102,3 +109,13 @@
     }
   }
   
+  /* Add smooth transitions for responsive containers */
+  @media screen and (max-width: 1200px), 
+         screen and (max-width: 600px) {
+    .about-containers,
+    .contact-info-upper-container,
+    .btn-container,
+    .section__pic-container {
+      transition: all 0.3s;
+    }
+  }
