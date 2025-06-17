@@ -6,28 +6,30 @@
     <title>Bernardo E. Dramos Jr. - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
         <div class="logo">Bernardo E. Dramos Jr.</div>
         <div id="desktop-nav">
             <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
         <div id="hamburger-nav">
             <div class="hamburger-menu">
-                <div class="hamburger-icon" onclick="toggleMenu()">
+                <div class="hamburger-icon" onclick="toggleMenu()" aria-label="Toggle navigation menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
                 <div class="menu-links">
+                    <a href="#home">Home</a>
                     <a href="#about">About</a>
-                    <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -35,181 +37,124 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>Bernardo Dramos</h1>
-        <p>Python Developer & Full-Stack Developer</p>
-        <div class="btn-container">
-            <a href="#" class="btn btn-color-1">Download CV</a>
-            <a href="#contact" class="btn btn-color-2">Contact Info</a>
+    <!-- Homepage Section -->
+    <section id="home" class="hero">
+        <div class="section-particles" id="particles-home"></div>
+        <div class="hero-content">
+            <h1>Bernardo E. Dramos Jr.</h1>
+            <p>Full-Stack Developer | Python & AI Specialist</p>
+            <div class="btn-container">
+                <a href="#projects" class="btn btn-color-1">View Projects</a>
+                <a href="#contact" class="btn btn-color-2">Get in Touch</a>
+            </div>
         </div>
     </section>
 
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-header" onclick="toggleChatbot()" aria-label="Toggle AI Assistant">
+            <span>AI Assistant</span>
+            <span class="chatbot-toggle">+</span>
+        </div>
+        <div class="chatbot-body">
+            <div class="chatbot-messages">
+                <div class="chatbot-message bot">Hi! I'm Bernardo's AI assistant. I can tell you about his skills, projects, or guide you through the portfolio. What would you like to know?</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message..." aria-label="Chatbot input">
+                <button onclick="sendMessage()" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
     <section id="about">
-        <h2>About Me</h2>
-        <div class="about-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <h3>Experience</h3>
-                    <p>1 Year<br>Python Development<br>Full-Stack Development</p>
+        <div class="section-particles" id="particles-about"></div>
+        <div class="section-content">
+            <h2>About Me</h2>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <h3>Experience</h3>
+                        <p>[Placeholder for years] Years<br>Full-Stack Development<br>Python & AI Development</p>
+                    </div>
+                    <div class="details-container">
+                        <h3>Education</h3>
+                        <p>B. Tech Computer Science & Eng.<br>[Placeholder for year]</p>
+                    </div>
                 </div>
-                <div class="details-container">
-                    <h3>Education</h3>
-                    <p>B. Tech Computer Science & Eng.<br>2026</p>
+                <div class="text-container">
+                    <p>I’m a passionate full-stack developer with expertise in Python and AI, dedicated to crafting innovative solutions that bridge technology and user needs. My journey in tech has equipped me with skills in building scalable web applications, developing intelligent AI models, and delivering seamless user experiences. I thrive on solving complex problems and continuously learning to stay at the forefront of technology trends.</p>
                 </div>
-            </div>
-            <div class="text-container">
-                <p>I believe to be a hardworking person who strives to achieve quality over quantity in my work. I can adapt with ease which aids in my problem-solving skills, and new challenges are always welcomed, so that I may overcome them and grow as a working professional. My passion is learning, especially from those who are more experienced, as it leads me to become more resourceful when difficulties arise.</p>
             </div>
         </div>
     </section>
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="experience-details-container">
-            <div class="article-container">
-                <div class="experience-sub-title">Frontend</div>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="HTML Icon" class="icon">
-                    <div>
-                        <h4>HTML</h4>
-                        <p>Experienced</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="CSS Icon" class="icon">
-                    <div>
-                        <h4>CSS</h4>
-                        <p>Experienced</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="Django Icon" class="icon">
-                    <div>
-                        <h4>Django</h4>
-                        <p>Beginner</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="JavaScript Icon" class="icon">
-                    <div>
-                        <h4>JavaScript</h4>
-                        <p>Intermediate</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="React Icon" class="icon">
-                    <div>
-                        <h4>React</h4>
-                        <p>Intermediate</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="Express.js Icon" class="icon">
-                    <div>
-                        <h4>Express.js</h4>
-                        <p>Intermediate</p>
-                    </div>
-                </article>
-            </div>
-            <div class="article-container">
-                <div class="experience-sub-title">Backend</div>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="Python Icon" class="icon">
-                    <div>
-                        <h4>Python</h4>
-                        <p>Experienced</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="Java Icon" class="icon">
-                    <div>
-                        <h4>Java</h4>
-                        <p>Intermediate</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="Go Icon" class="icon">
-                    <div>
-                        <h4>Go</h4>
-                        <p>Beginner</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="C++ Icon" class="icon">
-                    <div>
-                        <h4>C++</h4>
-                        <p>Beginner</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="Node.js Icon" class="icon">
-                    <div>
-                        <h4>Node.js</h4>
-                        <p>Intermediate</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="https://via.placeholder.com/24" alt="MongoDB Icon" class="icon">
-                    <div>
-                        <h4>MongoDB</h4>
-                        <p>Beginner</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
+    <!-- Projects Section -->
     <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-container">
-            <div class="color-container">
-                <img src="https://via.placeholder.com/300x200" alt="Project One" class="project-img">
-                <h3 class="project-title">Project One</h3>
-                <div class="btn-container">
-                    <a href="#" class="project-btn">Github</a>
-                    <a href="#" class="project-btn">Visit Site</a>
+        <div class="section-particles" id="particles-projects"></div>
+        <div class="section-content">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="color-container">
+                    <img src="https://via.placeholder.com/300x200" alt="Project One" class="project-img" loading="lazy">
+                    <h3 class="project-title">[Project One Title]</h3>
+                    <p class="project-desc">[Placeholder for project description]</p>
+                    <div class="btn-container">
+                        <a href="#" class="project-btn">GitHub</a>
+                        <a href="#" class="project-btn">Live Demo</a>
+                    </div>
                 </div>
-            </div>
-            <div class="color-container">
-                <img src="https://via.placeholder.com/300x200" alt="Project Two" class="project-img">
-                <h3 class="project-title">Project Two</h3>
-                <div class="btn-container">
-                    <a href="#" class="project-btn">Github</a>
-                    <a href="#" class="project-btn">Visit Site</a>
+                <div class="color-container">
+                    <img src="https://via.placeholder.com/300x200" alt="Project Two" class="project-img" loading="lazy">
+                    <h3 class="project-title">[Project Two Title]</h3>
+                    <p class="project-desc">[Placeholder for project description]</p>
+                    <div class="btn-container">
+                        <a href="#" class="project-btn">GitHub</a>
+                        <a href="#" class="project-btn">Live Demo</a>
+                    </div>
                 </div>
-            </div>
-            <div class="color-container">
-                <img src="https://via.placeholder.com/300x200" alt="Project Three" class="project-img">
-                <h3 class="project-title">Project Three</h3>
-                <div class="btn-container">
-                    <a href="#" class="project-btn">Github</a>
-                    <a href="#" class="project-btn">Visit Site</a>
+                <div class="color-container">
+                    <img src="https://via.placeholder.com/300x200" alt="Project Three" class="project-img" loading="lazy">
+                    <h3 class="project-title">[Project Three Title]</h3>
+                    <p class="project-desc">[Placeholder for project description]</p>
+                    <div class="btn-container">
+                        <a href="#" class="project-btn">GitHub</a>
+                        <a href="#" class="project-btn">Live Demo</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> 
 
+    <!-- Contact Section -->
     <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-info-upper-container">
-            <div class="contact-info-container">
-                <img src="https://via.placeholder.com/40" alt="Email Icon" class="contact-icon email-icon">
-                <p><a href="mailto:bernardo@example.com">bernardo@example.com</a></p>
-            </div>
-            <div class="contact-info-container">
-                <img src="https://via.placeholder.com/40" alt="LinkedIn Icon" class="contact-icon">
-                <p><a href="#">LinkedIn</a></p>
+        <div class="section-particles" id="particles-contact"></div>
+        <div class="section-content">
+            <h2>Contact Me</h2>
+            <div class="contact-form-container">
+                <form id="contact-form">
+                    <input type="text" id="name" placeholder="Your Name" required aria-label="Your name">
+                    <input type="email" id="email" placeholder="Your Email" required aria-label="Your email">
+                    <textarea id="message" placeholder="Your Message" required aria-label="Your message"></textarea>
+                    <button type="submit" class="btn btn-color-1">Send Message</button>
+                </form>
+                <div class="contact-info-upper-container">
+                    <div class="contact-info-container">
+                        <img src="https://via.placeholder.com/40" alt="Email Icon" class="contact-icon email-icon">
+                        <p><a href="mailto:[your-email]">[your-email]</a></p>
+                    </div>
+                    <div class="contact-info-container">
+                        <img src="https://via.placeholder.com/40" alt="LinkedIn Icon" class="contact-icon">
+                        <p><a href="#">LinkedIn</a></p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
         <p>Copyright © 2025 Bernardo E. Dramos Jr. All Rights Reserved.</p>
     </footer>
 

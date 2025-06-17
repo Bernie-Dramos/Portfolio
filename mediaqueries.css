@@ -17,83 +17,32 @@
     #hamburger-nav {
         display: flex;
     }
-    .experience-details-container {
-        margin-top: 2rem;
-    }
-    .hero,
-    .section-container {
-        display: block;
+    .hero {
+        height: 83vh;
     }
     section {
         margin: 0 5%;
         height: fit-content;
     }
-    .about-containers {
-        margin-top: 0;
-    }
 }
 
 @media screen and (max-width: 600px) {
-    #contact,
-    footer {
-        height: 40vh;
+    .hero h1 {
+        font-size: 3rem;
     }
-    .hero {
-        height: 83vh;
-        margin-bottom: 0;
-    }
-    article {
-        font-size: 1rem;
-    }
-    footer nav {
-        height: fit-content;
-        margin-bottom: 2rem;
-    }
-    .about-containers,
-    .contact-info-upper-container,
-    .btn-container {
-        flex-wrap: wrap;
-    }
-    .contact-info-container {
-        margin: 0;
-    }
-    .contact-info-container p,
-    .nav-links li a {
-        font-size: 1rem;
-    }
-    .experience-sub-title {
-        font-size: 1.25rem;
+    .hero p {
+        font-size: 1.2rem;
     }
     .logo {
         font-size: 1.5rem;
     }
-    .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
+    .chatbot-container {
+        width: 300px;
     }
-    .nav-links li a {
-        padding: 1rem 0.5rem;
-        min-width: 44px;
-        min-height: 44px;
-        display: inline-block;
+    .contact-info-upper-container {
+        flex-wrap: wrap;
     }
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .hero p {
-        font-size: 1.25rem;
-    }
-    .text-container {
-        text-align: justify;
-    }
-}
-
-@media screen and (max-width: 1200px), 
-       screen and (max-width: 600px) {
-    .about-containers,
-    .contact-info-upper-container,
-    .btn-container {
-        transition: all 0.3s;
+    .section-particles {
+        opacity: 0.3; /* Reduce opacity on mobile for better readability */
     }
 }
