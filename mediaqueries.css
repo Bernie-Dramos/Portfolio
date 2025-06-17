@@ -1,121 +1,99 @@
 @media screen and (max-width: 1400px) {
-    #profile {
-      height: 83vh;
-      margin-bottom: 6rem;
+    .hero {
+        height: 83vh;
     }
     .about-containers {
-      flex-wrap: wrap;
+        flex-wrap: wrap;
     }
-    #contact,
-    #projects {
-      height: fit-content;
+    #contact {
+        height: fit-content;
     }
-  }
-  
-  @media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 1200px) {
     #desktop-nav {
-      display: none;
+        display: none;
     }
     #hamburger-nav {
-      display: flex;
+        display: flex;
     }
-    #experience,
     .experience-details-container {
-      margin-top: 2rem;
+        margin-top: 2rem;
     }
-    #profile,
+    .hero,
     .section-container {
-      display: block;
-    }
-    .arrow {
-      display: none;
-    }
-    section,
-    .section-container {
-      height: fit-content;
+        display: block;
     }
     section {
-      margin: 0 5%;
-    }
-    .section__pic-container {
-      width: 275px;
-      height: 275px;
-      margin: 0 auto 2rem;
+        margin: 0 5%;
+        height: fit-content;
     }
     .about-containers {
-      margin-top: 0;
+        margin-top: 0;
     }
-  }
-  
-  @media screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 600px) {
     #contact,
     footer {
-      height: 40vh;
+        height: 40vh;
     }
-    #profile {
-      height: 83vh;
-      margin-bottom: 0;
+    .hero {
+        height: 83vh;
+        margin-bottom: 0;
     }
     article {
-      font-size: 1rem;
+        font-size: 1rem;
     }
     footer nav {
-      height: fit-content;
-      margin-bottom: 2rem;
+        height: fit-content;
+        margin-bottom: 2rem;
     }
     .about-containers,
     .contact-info-upper-container,
     .btn-container {
-      flex-wrap: wrap;
+        flex-wrap: wrap;
     }
     .contact-info-container {
-      margin: 0;
+        margin: 0;
     }
     .contact-info-container p,
     .nav-links li a {
-      font-size: 1rem;
+        font-size: 1rem;
     }
     .experience-sub-title {
-      font-size: 1.25rem;
+        font-size: 1.25rem;
     }
     .logo {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
     .nav-links {
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: center;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
     }
     .nav-links li a {
-      padding: 1rem 0.5rem;
-      min-width: 44px;
-      min-height: 44px;
-      display: inline-block;
-      transition: background 0.2s, color 0.2s;
+        padding: 1rem 0.5rem;
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-block;
     }
-    .section__pic-container {
-      width: auto;
-      height: 46vw;
-      justify-content: center;
+    .hero h1 {
+        font-size: 2rem;
     }
-    .section__text__p2 {
-      font-size: 1.25rem;
-    }
-    .title {
-      font-size: 2rem;
+    .hero p {
+        font-size: 1.25rem;
     }
     .text-container {
-      text-align: justify;
+        text-align: justify;
     }
-  }
-  
-  /* Add smooth transitions for responsive containers */
-  @media screen and (max-width: 1200px), 
-         screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 1200px), 
+       screen and (max-width: 600px) {
     .about-containers,
     .contact-info-upper-container,
-    .btn-container,
-    .section__pic-container {
-      transition: all 0.3s;
+    .btn-container {
+        transition: all 0.3s;
     }
-  }
+}

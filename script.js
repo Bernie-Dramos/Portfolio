@@ -5,7 +5,6 @@ function toggleMenu() {
     icon.classList.toggle("open");
 }
 
-// Smooth scroll for anchor links
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", function (e) {
         if (e.target.matches('a[href^="#"]')) {
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: "smooth" });
-                // Close menu if open (for mobile)
                 const menu = document.querySelector(".menu-links");
                 const icon = document.querySelector(".hamburger-icon");
                 if (menu && icon && menu.classList.contains("open")) {
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Debounce utility (for future interactive features)
 function debounce(fn, delay) {
     let timeout;
     return function (...args) {
