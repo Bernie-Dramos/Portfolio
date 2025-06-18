@@ -5,59 +5,7 @@ function toggleMenu() {
     icon.classList.toggle("open");
 }
 
-function toggleChatbot() {
-    const chatbotBody = document.querySelector(".chatbot-body");
-    const toggleBtn = document.querySelector(".chatbot-toggle");
-    chatbotBody.classList.toggle("open");
-    toggleBtn.textContent = chatbotBody.classList.contains("open") ? "−" : "+";
-}
-
-function sendMessage() {
-    const input = document.getElementById("chatbot-input");
-    const messages = document.querySelector(".chatbot-messages");
-    const userMessage = input.value.trim();
-
-    if (userMessage === "") {
-        alert("Please enter a message!");
-        return;
-    }
-
-    // Add user message
-    const userMsgElement = document.createElement("div");
-    userMsgElement.classList.add("chatbot-message", "user");
-    userMsgElement.textContent = userMessage;
-    messages.appendChild(userMsgElement);
-
-    // Simulate bot response
-    setTimeout(() => {
-        const botMessage = document.createElement("div");
-        botMessage.classList.add("chatbot-message", "bot");
-        botMessage.textContent = getBotResponse(userMessage.toLowerCase());
-        messages.appendChild(botMessage);
-        messages.scrollTop = messages.scrollHeight;
-    }, 500);
-
-    input.value = "";
-}
-
-function getBotResponse(message) {
-    if (message.includes("skills")) {
-        return "Bernardo is a Full-Stack Developer with expertise in Python and AI. He’s skilled in building scalable web applications, developing AI models, and creating seamless user experiences.";
-    } else if (message.includes("projects")) {
-        return "Check out Bernardo’s projects section to see his work! He’s built applications showcasing his full-stack, Python, and AI skills.";
-    } else if (message.includes("contact")) {
-        return "You can reach Bernardo via the Contact Me section. Fill out the form, and he’ll get back to you!";
-    } else if (message.includes("python")) {
-        return "Bernardo has extensive experience in Python, using it for web development, AI, and automation projects.";
-    } else if (message.includes("ai")) {
-        return "Bernardo specializes in AI, building intelligent models for applications like chatbots and data analysis.";
-    } else if (message.includes("full-stack")) {
-        return "As a Full-Stack Developer, Bernardo works with both frontend (HTML, CSS, JavaScript) and backend (Python, Node.js) technologies to create complete web solutions.";
-    } else {
-        return "I’m not sure about that. Try asking about Bernardo’s skills, projects, Python, AI, full-stack development, or how to contact him!";
-    }
-}
-
+// Close mobile menu when a menu link is clicked (for accessibility and mobile UX)
 document.addEventListener("DOMContentLoaded", () => {
     // Initialize particles.js for each section
     // Home Section
@@ -136,7 +84,26 @@ document.addEventListener("DOMContentLoaded", () => {
         retina_detect: true
     });
 
-    // Smooth scrolling
+    // Skills Section Particles
+    particlesJS("particles-skills", {
+        particles: {
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            color: { value: "#00d4ff" },
+            shape: { type: "polygon" },
+            opacity: { value: 0.3, random: false },
+            size: { value: 2, random: true },
+            line_linked: { enable: false },
+            move: { enable: true, speed: 1, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+            modes: { grab: { distance: 120, line_linked: { opacity: 0.5 } }, push: { particles_nb: 2 } }
+        },
+        retina_detect: true
+    });
+
+    // Smooth scrolling for all anchor links (including #skills)
     document.body.addEventListener("click", function (e) {
         if (e.target.matches('a[href^="#"]')) {
             const targetId = e.target.getAttribute("href");
@@ -229,4 +196,48 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('.projects-carousel-btn.right').addEventListener('click', showNextProject);
         updateCarousel();
     }
+
+    // Close hamburger menu on link click (mobile)
+    document.querySelectorAll('.menu-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            if (menu && icon && menu.classList.contains("open")) {
+                menu.classList.remove("open");
+                icon.classList.remove("open");
+            }
+        });
+    });
+
+    const nav = document.querySelector('nav');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function handleNavScroll() {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY <= 0) {
+            nav.classList.remove('hide-nav');
+            nav.classList.add('show-nav');
+        } else if (currentScrollY > lastScrollY) {
+            // Scrolling down
+            nav.classList.remove('show-nav');
+            nav.classList.add('hide-nav');
+        } else {
+            // Scrolling up
+            nav.classList.remove('hide-nav');
+            nav.classList.add('show-nav');
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(handleNavScroll);
+            ticking = true;
+        }
+    });
+
+    // On load, ensure nav is visible
+    nav.classList.add('show-nav');
 });
