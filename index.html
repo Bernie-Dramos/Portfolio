@@ -9,42 +9,48 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">Bernardo E. Dramos Jr.</div>
-        <div id="desktop-nav">
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <div id="hamburger-nav">
-            <div class="hamburger-menu">
-                <div class="hamburger-icon" onclick="toggleMenu()" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="menu-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+    <header
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">Bernardo Dramos</div>
+            <div id="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div id="hamburger-nav">
+                <div class="hamburger-menu">
+                    <div class="hamburger-icon" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="menu-links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#contact">Contact</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Homepage Section -->
     <section id="home" class="hero">
         <div class="section-particles" id="particles-home"></div>
         <div class="hero-content">
             <h1>Bernardo E. Dramos Jr.</h1>
-            <p>Full-Stack Developer | Python & AI Specialist</p>
+            <h3>Full-Stack Developer | Python Developer | AI/ML Developer</h3>
+            <p>Hi & Welcome! I'm a passionate full-stack developer with a strong foundation in Python and AI. I thrive <br> on building innovative 
+                web solutions and intelligent systems, blending technical expertise with a <br> commitment to lifelong learning. With a background in computer science, 
+                I’m eager to tackle complex <br> challenges and contribute to impactful projects not just for me and you, but for all of those around us as well.
+            </p>
             <div class="btn-container">
-                <a href="#projects" class="btn btn-color-1">View Projects</a>
+                <a href="#projects" class="btn btn-color-1">View My Projects</a>
                 <a href="#contact" class="btn btn-color-2">Get in Touch</a>
             </div>
         </div>
@@ -97,30 +103,27 @@
             <h2>Projects</h2>
             <div class="projects-container">
                 <div class="color-container">
-                    <img src="https://via.placeholder.com/300x200" alt="Project One" class="project-img" loading="lazy">
-                    <h3 class="project-title">[Project One Title]</h3>
-                    <p class="project-desc">[Placeholder for project description]</p>
+                    <img src="assets\finance_tracker.jpg" alt="Project One" class="project-img" loading="lazy">
+                    <h3 class="project-title">Finance Tracker</h3>
                     <div class="btn-container">
-                        <a href="#" class="project-btn">GitHub</a>
-                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="https://github.com/Bernie-Dramos" class="project-btn">GitHub</a>
+                        <a href="https://google.com" class="project-btn">Live Demo</a>
                     </div>
                 </div>
                 <div class="color-container">
-                    <img src="https://via.placeholder.com/300x200" alt="Project Two" class="project-img" loading="lazy">
-                    <h3 class="project-title">[Project Two Title]</h3>
-                    <p class="project-desc">[Placeholder for project description]</p>
+                    <img src="assets\emas.png" alt="Project Two" class="project-img" loading="lazy">
+                    <h3 class="project-title">Government Website</h3>
                     <div class="btn-container">
-                        <a href="#" class="project-btn">GitHub</a>
-                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="https://github.com/Bernie-Dramos" class="project-btn">GitHub</a>
+                        <a href="https://google.com" class="project-btn">Live Demo</a>
                     </div>
                 </div>
                 <div class="color-container">
-                    <img src="https://via.placeholder.com/300x200" alt="Project Three" class="project-img" loading="lazy">
-                    <h3 class="project-title">[Project Three Title]</h3>
-                    <p class="project-desc">[Placeholder for project description]</p>
+                    <img src="assets\personal_ai.jpg" alt="Project Three" class="project-img" loading="lazy">
+                    <h3 class="project-title">Bernie.AI</h3>
                     <div class="btn-container">
-                        <a href="#" class="project-btn">GitHub</a>
-                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="https://github.com/Bernie-Dramos" class="project-btn">GitHub</a>
+                        <a href="https://google.com" class="project-btn">Live Demo</a>
                     </div>
                 </div>
             </div>
@@ -141,12 +144,12 @@
                 </form>
                 <div class="contact-info-upper-container">
                     <div class="contact-info-container">
-                        <img src="https://via.placeholder.com/40" alt="Email Icon" class="contact-icon email-icon">
-                        <p><a href="mailto:[your-email]">[your-email]</a></p>
+                        <img src="assets\github.png" alt="Github Icon" class="contact-icon email-icon">
+                        <p><a href="https://github.com/Bernie-Dramos">Github</a></p>
                     </div>
                     <div class="contact-info-container">
-                        <img src="https://via.placeholder.com/40" alt="LinkedIn Icon" class="contact-icon">
-                        <p><a href="#">LinkedIn</a></p>
+                        <img src="assets\linkedin.png" alt="LinkedIn Icon" class="contact-icon">
+                        <p><a href="https://www.linkedin.com/in/bernardoedramosjr-62aa85229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></p>
                     </div>
                 </div>
             </div>

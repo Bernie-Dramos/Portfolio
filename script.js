@@ -189,4 +189,44 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Network error. Please check your connection and try again.");
         }
     });
+
+    // Projects Carousel Logic
+    const carousel = document.querySelector('.projects-carousel');
+    const cards = carousel ? Array.from(carousel.querySelectorAll('.project-card')) : [];
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        cards.forEach((card, idx) => {
+            card.classList.remove('side', 'hidden');
+            if (idx === currentIndex) {
+                card.classList.remove('side', 'hidden');
+            } else if (idx === currentIndex - 1 || idx === currentIndex + 1) {
+                card.classList.add('side');
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    }
+
+    function showPrevProject() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    }
+
+    function showNextProject() {
+        if (currentIndex < cards.length - 1) {
+            currentIndex++;
+            updateCarousel();
+        }
+    }
+
+    // Attach event listeners if carousel exists
+    if (carousel) {
+        document.querySelector('.projects-carousel-btn.left').addEventListener('click', showPrevProject);
+        document.querySelector('.projects-carousel-btn.right').addEventListener('click', showNextProject);
+        updateCarousel();
+    }
 });
