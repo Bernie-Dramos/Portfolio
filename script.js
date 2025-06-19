@@ -5,6 +5,64 @@ function toggleMenu() {
     icon.classList.toggle("open");
 }
 
+function toggleChatbot() {
+    const chatbotBody = document.querySelector(".chatbot-body");
+    const toggleBtn = document.querySelector(".chatbot-toggle");
+    if (chatbotBody && toggleBtn) {
+        chatbotBody.classList.toggle("open");
+        toggleBtn.textContent = chatbotBody.classList.contains("open") ? "−" : "+";
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById("chatbot-input");
+    const messages = document.querySelector(".chatbot-messages");
+    const userMessage = input.value.trim();
+
+    if (userMessage === "") {
+        alert("Please enter a message!");
+        return;
+    }
+
+    // Add user message
+    const userMsgElement = document.createElement("div");
+    userMsgElement.classList.add("chatbot-message", "user");
+    userMsgElement.textContent = userMessage;
+    messages.appendChild(userMsgElement);
+
+    // Check for keywords and scroll to section if needed
+    const msgLower = userMessage.toLowerCase();
+    let sectionId = null;
+    if (msgLower.includes("contact")) {
+        sectionId = "#contact";
+    } else if (msgLower.includes("skills")) {
+        sectionId = "#skills";
+    } else if (msgLower.includes("about")) {
+        sectionId = "#about";
+    } else if (msgLower.includes("project")) {
+        sectionId = "#projects";
+    }
+    if (sectionId) {
+        setTimeout(() => {
+            const section = document.querySelector(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 400);
+    }
+
+    // Simulate bot response
+    setTimeout(() => {
+        const botMessage = document.createElement("div");
+        botMessage.classList.add("chatbot-message", "bot");
+        botMessage.textContent = getBotResponse(msgLower);
+        messages.appendChild(botMessage);
+        messages.scrollTop = messages.scrollHeight;
+    }, 500);
+
+    input.value = "";
+}
+
 // Close mobile menu when a menu link is clicked (for accessibility and mobile UX)
 document.addEventListener("DOMContentLoaded", () => {
     // Initialize particles.js for each section
@@ -240,4 +298,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // On load, ensure nav is visible
     nav.classList.add('show-nav');
+
+    const chatbotInput = document.getElementById("chatbot-input");
+    if (chatbotInput) {
+        chatbotInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }
 });

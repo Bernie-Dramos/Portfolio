@@ -56,19 +56,20 @@
         </div>
     </section>
 
-    <!-- AI Chatbot -->
+    <!-- Chatbot -->
     <div class="chatbot-container">
         <div class="chatbot-header" onclick="toggleChatbot()" aria-label="Toggle AI Assistant">
-            <span>AI Assistant</span>
+            <span>Assistant</span>
             <span class="chatbot-toggle">+</span>
         </div>
         <div class="chatbot-body">
             <div class="chatbot-messages">
-                <div class="chatbot-message bot">Hi! I'm Bernardo's AI assistant. I can tell you about his skills, projects, or guide you through the portfolio. What would you like to know?</div>
+                <div class="chatbot-message bot">Hi! I'm Bernardo's mini assistant. I can direct you to his story, skills, projects, 
+                    or his means of contact. Wheree would you like to go?</div>
             </div>
             <div class="chatbot-input">
                 <input type="text" id="chatbot-input" placeholder="Type your message..." aria-label="Chatbot input">
-                <button onclick="sendMessage()" aria-label="Send message">Send</button>
+                <button onclick="sendMessage()" aria-label="Send message"><img src="assets\send.png"></button>
             </div>
         </div>
     </div>
@@ -233,22 +234,22 @@
         <div class="section-particles" id="particles-contact"></div>
         <div class="section-content">
             <h2>Contact Me</h2>
-            <div class="contact-form-container">
-                <form id="contact-form">
-                    <input type="text" id="name" placeholder="Your Name" required aria-label="Your name">
-                    <input type="email" id="email" placeholder="Your Email" required aria-label="Your email">
-                    <textarea id="message" placeholder="Your Message" required aria-label="Your message"></textarea>
-                    <button type="submit" class="btn btn-color-1">Send Message</button>
-                </form>
-                <div class="contact-info-upper-container">
-                    <div class="contact-info-container">
-                        <img src="assets\github.png" alt="Github Icon" class="contact-icon email-icon">
-                        <p><a href="https://github.com/Bernie-Dramos">Github</a></p>
-                    </div>
-                    <div class="contact-info-container">
-                        <img src="assets\linkedin.png" alt="LinkedIn Icon" class="contact-icon">
-                        <p><a href="https://www.linkedin.com/in/bernardoedramosjr-62aa85229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></p>
-                    </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <img src="assets\github.png" alt="Github Icon" class="contact-icon">
+                    <span><a href="https://github.com/Bernie-Dramos">Github</a></span>
+                </div>
+                <div class="contact-item">
+                    <img src="assets\linkedin.png" alt="LinkedIn Icon" class="contact-icon">
+                    <span><a href="https://www.linkedin.com/in/bernardoedramosjr-62aa85229">LinkedIn</a></span>
+                </div>
+                <div class="contact-item">
+                    <img src="assets\gmail.png" alt="Gmail Icon" class="contact-icon">
+                    <span><a href="mailto:dramosb44@gmail.com">Gmail</a></span>
+                </div>
+                <div class="contact-item">
+                    <img src="assets\resume.png" alt="Resume Icon" class="contact-icon">
+                    <span><a href="assets\resume.pdf">Resume</a></span>
                 </div>
             </div>
         </div>
